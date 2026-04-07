@@ -1,29 +1,30 @@
-import Navbar from "@/components/Navbar";
-import LeadCapture from "@/components/LeadCapture";
+import Layout from "@/components/Layout";
+import HeroSection from "@/components/HeroSection";
 import TrustStats from "@/components/TrustStats";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import Pricing from "@/components/Pricing";
-import Process from "@/components/Process";
-import ProjectsGallery from "@/components/ProjectsGallery";
+import AboutPreview from "@/components/AboutPreview";
 import Testimonials from "@/components/Testimonials";
+import ProjectsGallery from "@/components/ProjectsGallery";
+import CostCalculator from "@/components/CostCalculator";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import Process from "@/components/Process";
+import LiveTracking from "@/components/LiveTracking";
+import ServicesHighlight from "@/components/ServicesHighlight";
 import FinalCTA from "@/components/FinalCTA";
-import Footer from "@/components/Footer";
 
 const Index = () => (
-  <div className="min-h-screen">
-    <Navbar />
-    <div className="pt-[72px]">
-      <LeadCapture />
-      <TrustStats />
-      <WhyChooseUs />
-      <Pricing />
-      <Process />
-      <ProjectsGallery />
-      <Testimonials />
-      <FinalCTA />
-      <Footer />
-    </div>
-  </div>
+  <Layout>
+    <HeroSection />
+    <TrustStats />
+    <AboutPreview />
+    <Testimonials />
+    <ProjectsGallery />
+    <CostCalculator />
+    <WhyChooseUs />
+    <Process />
+    <LiveTracking />
+    <ServicesHighlight />
+    <FinalCTA />
+  </Layout>
 );
 
 export default Index;

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 const Footer = () => (
@@ -16,17 +17,17 @@ const Footer = () => (
         <div>
           <h4 className="text-primary-foreground font-semibold text-sm mb-4">Quick Links</h4>
           <ul className="space-y-2">
-            {["Home", "Estate", "Interiors", "Projects", "Pricing"].map((link) => (
-              <li key={link}>
-                <button
-                  onClick={() => {
-                    if (link === "Home") window.scrollTo({ top: 0, behavior: "smooth" });
-                    else document.getElementById(link.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="text-primary-foreground/40 hover:text-primary-foreground text-sm transition-colors"
-                >
-                  {link}
-                </button>
+            {[
+              { label: "Home", path: "/" },
+              { label: "Estate", path: "/estate" },
+              { label: "Interiors", path: "/interiors" },
+              { label: "Projects", path: "/projects" },
+              { label: "About", path: "/about" },
+            ].map((link) => (
+              <li key={link.path}>
+                <Link to={link.path} className="text-primary-foreground/40 hover:text-primary-foreground text-sm transition-colors">
+                  {link.label}
+                </Link>
               </li>
             ))}
           </ul>
