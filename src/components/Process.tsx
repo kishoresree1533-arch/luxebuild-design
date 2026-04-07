@@ -1,8 +1,10 @@
+import { MessageSquare, PenTool, HardHat, Key } from "lucide-react";
+
 const steps = [
-  { num: "01", title: "Consultation", desc: "We discuss your vision, budget, and timeline in a free consultation." },
-  { num: "02", title: "Design & Planning", desc: "Our architects create detailed plans and 3D visualizations for approval." },
-  { num: "03", title: "Construction", desc: "Our team begins building with daily updates and quality inspections." },
-  { num: "04", title: "Handover", desc: "Final walkthrough, quality checks, and keys handed over on schedule." },
+  { icon: MessageSquare, title: "Consultation", desc: "Discuss your vision, budget, and timeline." },
+  { icon: PenTool, title: "Design & Plan", desc: "Custom plans and 3D visualizations." },
+  { icon: HardHat, title: "Construction", desc: "Build with daily updates and inspections." },
+  { icon: Key, title: "Handover", desc: "Final walkthrough and keys on schedule." },
 ];
 
 const Process = () => (
@@ -14,37 +16,27 @@ const Process = () => (
           From Vision to Reality in 4 Steps
         </h2>
         <p className="text-body max-w-2xl mx-auto">
-          A streamlined process designed for transparency, efficiency, and your peace of mind.
+          A streamlined process designed for transparency and your peace of mind.
         </p>
       </div>
 
-      <div className="max-w-3xl mx-auto relative">
-        {/* Timeline line */}
-        <div className="absolute left-8 lg:left-1/2 top-0 bottom-0 w-0.5 bg-navy/10 -translate-x-1/2 hidden md:block" />
+      {/* Horizontal steps */}
+      <div className="max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-0 relative">
+          {/* Connecting line (desktop) */}
+          <div className="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-0.5 bg-border z-0" />
 
-        <div className="space-y-12">
           {steps.map((step, i) => (
-            <div
-              key={i}
-              className={`flex items-start gap-6 md:gap-12 animate-fade-in ${
-                i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              }`}
-              style={{ animationDelay: `${i * 0.15}s` }}
-            >
-              <div className={`flex-1 ${i % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
-                <div className="bg-card rounded-xl p-6 card-shadow hover-lift inline-block w-full">
-                  <span className="text-glow-blue font-bold text-sm">{step.num}</span>
-                  <h3 className="font-display text-xl font-bold text-foreground mt-1 mb-2">{step.title}</h3>
-                  <p className="text-body text-sm leading-relaxed">{step.desc}</p>
-                </div>
+            <div key={i} className="relative flex flex-col items-center text-center px-4 group">
+              {/* Icon circle */}
+              <div className="w-20 h-20 bg-card border-2 border-navy rounded-full flex items-center justify-center mb-6 z-10 group-hover:bg-navy transition-colors duration-300">
+                <step.icon className="w-8 h-8 text-navy group-hover:text-primary-foreground transition-colors duration-300" />
               </div>
 
-              {/* Connector dot */}
-              <div className="hidden md:flex items-center justify-center flex-shrink-0">
-                <div className="w-4 h-4 bg-navy rounded-full ring-4 ring-background relative z-10" />
-              </div>
-
-              <div className="flex-1 hidden md:block" />
+              {/* Step number */}
+              <span className="text-glow-blue font-bold text-xs tracking-widest mb-2">STEP 0{i + 1}</span>
+              <h3 className="font-display text-lg font-bold text-foreground mb-2">{step.title}</h3>
+              <p className="text-body text-sm leading-relaxed">{step.desc}</p>
             </div>
           ))}
         </div>

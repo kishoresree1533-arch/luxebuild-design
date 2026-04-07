@@ -53,7 +53,7 @@ const plans = [
 ];
 
 const Pricing = () => (
-  <section id="pricing" className="bg-background py-24">
+  <section id="pricing" className="bg-surface-light py-24">
     <div className="container mx-auto px-4 lg:px-8">
       <div className="text-center mb-16">
         <p className="text-glow-blue font-semibold text-sm tracking-widest uppercase mb-3">Pricing</p>
@@ -65,14 +65,14 @@ const Pricing = () => (
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+      <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto items-center">
         {plans.map((plan, i) => (
           <div
             key={i}
-            className={`rounded-2xl p-8 relative hover-lift ${
+            className={`rounded-2xl p-8 relative transition-all duration-300 ${
               plan.popular
-                ? "bg-navy-gradient text-primary-foreground ring-2 ring-glow-blue"
-                : "bg-card card-shadow border border-border"
+                ? "bg-navy text-primary-foreground scale-[1.05] shadow-2xl z-10"
+                : "bg-card border border-border hover-lift"
             }`}
           >
             {plan.popular && (
@@ -99,13 +99,13 @@ const Pricing = () => (
             <ul className="space-y-3 mb-8">
               {plan.features.map((f, j) => (
                 <li key={j} className="flex items-start gap-3 text-sm">
-                  <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.popular ? "text-glow-blue" : "text-glow-blue"}`} />
+                  <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.popular ? "text-glow-blue" : "text-navy"}`} />
                   <span className={plan.popular ? "text-primary-foreground/80" : "text-body"}>{f}</span>
                 </li>
               ))}
             </ul>
             <button
-              className={`w-full py-3.5 rounded-lg font-semibold text-sm transition-all duration-300 ${
+              className={`w-full py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 ${
                 plan.popular
                   ? "bg-glow-blue text-primary-foreground glow-btn"
                   : "bg-navy text-primary-foreground hover:bg-navy-light"

@@ -5,8 +5,8 @@ const Footer = () => (
     <div className="container mx-auto px-4 lg:px-8">
       <div className="grid md:grid-cols-4 gap-10 mb-12">
         <div>
-          <h3 className="font-display text-xl font-bold text-primary-foreground mb-4">
-            ELITE<span className="text-glow-blue">BUILD</span>
+          <h3 className="font-display text-lg font-bold text-primary-foreground mb-4">
+            Porko <span className="text-glow-blue">Construction</span> & Estate
           </h3>
           <p className="text-primary-foreground/40 text-sm leading-relaxed">
             Premium construction services delivering luxury homes and commercial projects with unmatched quality.
@@ -16,10 +16,13 @@ const Footer = () => (
         <div>
           <h4 className="text-primary-foreground font-semibold text-sm mb-4">Quick Links</h4>
           <ul className="space-y-2">
-            {["Services", "Pricing", "Projects", "Process", "Testimonials"].map((link) => (
+            {["Home", "Estate", "Interiors", "Projects", "Pricing"].map((link) => (
               <li key={link}>
                 <button
-                  onClick={() => document.getElementById(link.toLowerCase())?.scrollIntoView({ behavior: "smooth" })}
+                  onClick={() => {
+                    if (link === "Home") window.scrollTo({ top: 0, behavior: "smooth" });
+                    else document.getElementById(link.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
+                  }}
                   className="text-primary-foreground/40 hover:text-primary-foreground text-sm transition-colors"
                 >
                   {link}
@@ -36,7 +39,7 @@ const Footer = () => (
             <li>Commercial Projects</li>
             <li>Interior Design</li>
             <li>Renovation & Remodeling</li>
-            <li>Project Management</li>
+            <li>Estate Development</li>
           </ul>
         </div>
 
@@ -49,7 +52,7 @@ const Footer = () => (
             </li>
             <li className="flex items-center gap-3 text-primary-foreground/40 text-sm">
               <Mail className="w-4 h-4 text-glow-blue flex-shrink-0" />
-              info@elitebuild.com
+              info@porkoconstruction.com
             </li>
             <li className="flex items-start gap-3 text-primary-foreground/40 text-sm">
               <MapPin className="w-4 h-4 text-glow-blue flex-shrink-0 mt-0.5" />
@@ -61,7 +64,7 @@ const Footer = () => (
 
       <div className="border-t border-primary-foreground/10 pt-8 text-center">
         <p className="text-primary-foreground/30 text-xs">
-          © {new Date().getFullYear()} EliteBuild. All rights reserved.
+          © {new Date().getFullYear()} Porko Construction & Estate. All rights reserved.
         </p>
       </div>
     </div>
