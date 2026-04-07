@@ -18,7 +18,7 @@ const FinalCTA = () => {
         </p>
         <button
           onClick={scrollTo}
-          className="bg-glow-blue text-primary-foreground px-10 py-4 rounded-lg font-semibold text-base glow-btn inline-flex items-center gap-3"
+          className="bg-glow-blue text-primary-foreground px-10 py-4 rounded-xl font-semibold text-base glow-btn inline-flex items-center gap-3"
         >
           Get Your Free Estimate
           <ArrowRight className="w-5 h-5" />

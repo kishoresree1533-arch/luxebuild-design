@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send } from "lucide-react";
+import { Send, Building2, ShieldCheck, Clock, ArrowRight } from "lucide-react";
 
 const LeadCapture = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -9,90 +9,119 @@ const LeadCapture = () => {
     setSubmitted(true);
   };
 
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section id="contact" className="bg-navy-gradient py-24 lg:py-32">
+    <section id="contact" className="bg-background py-20 lg:py-28">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          {/* Left - Content */}
           <div className="animate-fade-in">
-            <p className="text-glow-blue font-semibold text-sm tracking-widest uppercase mb-4">
-              Start Your Project
+            <p className="text-glow-blue font-semibold text-sm tracking-widest uppercase mb-5">
+              Premium Construction Services
             </p>
-            <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-foreground leading-tight mb-6">
+            <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-[1.15] mb-6">
               Build Your Dream
               <br />
-              <span className="text-glow-blue">With Confidence</span>
+              Home <span className="text-navy">With Confidence</span>
             </h1>
-            <p className="text-primary-foreground/60 text-lg leading-relaxed max-w-lg mb-8">
-              Premium construction services trusted by 500+ families. From concept to keys —
-              on time, on budget, no surprises.
+            <p className="text-body text-lg leading-relaxed max-w-lg mb-10">
+              Porko Construction & Estate delivers luxury homes trusted by 500+ families — on time, on budget, with zero surprises.
             </p>
-            <div className="flex items-center gap-8 text-primary-foreground/50 text-sm">
-              <span>✓ Free consultation</span>
-              <span>✓ Response within 24hrs</span>
+
+            <div className="flex flex-wrap items-center gap-4 mb-12">
+              <button
+                onClick={() => scrollTo("contact")}
+                className="bg-navy text-primary-foreground px-8 py-4 rounded-xl text-sm font-semibold glow-btn inline-flex items-center gap-2"
+              >
+                Get Free Quote
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => scrollTo("projects")}
+                className="border-2 border-navy text-navy px-8 py-4 rounded-xl text-sm font-semibold hover:bg-navy hover:text-primary-foreground transition-all duration-300"
+              >
+                View Projects
+              </button>
+            </div>
+
+            {/* Trust badges */}
+            <div className="flex flex-wrap items-center gap-8">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-surface-light rounded-lg flex items-center justify-center">
+                  <Building2 className="w-5 h-5 text-navy" />
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground text-sm">500+</p>
+                  <p className="text-body text-xs">Projects Completed</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-surface-light rounded-lg flex items-center justify-center">
+                  <ShieldCheck className="w-5 h-5 text-navy" />
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground text-sm">15 Years</p>
+                  <p className="text-body text-xs">Warranty Included</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-surface-light rounded-lg flex items-center justify-center">
+                  <Clock className="w-5 h-5 text-navy" />
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground text-sm">On-Time</p>
+                  <p className="text-body text-xs">Guaranteed Delivery</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="glass rounded-2xl p-8 lg:p-10 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+          {/* Right - Form */}
+          <div
+            className="bg-card rounded-2xl p-8 lg:p-10 card-shadow border border-border animate-fade-in"
+            style={{ animationDelay: "0.2s" }}
+          >
             {submitted ? (
               <div className="text-center py-12">
-                <div className="w-16 h-16 bg-glow-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-glow-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Send className="w-7 h-7 text-glow-blue" />
                 </div>
-                <h3 className="font-display text-2xl font-bold text-primary-foreground mb-2">Request Received!</h3>
-                <p className="text-primary-foreground/60">Our team will call you within 24 hours.</p>
+                <h3 className="font-display text-2xl font-bold text-foreground mb-2">Request Received!</h3>
+                <p className="text-body">Our team will call you within 24 hours.</p>
               </div>
             ) : (
               <>
-                <h3 className="font-display text-xl font-bold text-primary-foreground mb-1">Get a Free Estimate</h3>
-                <p className="text-primary-foreground/50 text-sm mb-6">No commitment · Response within 24 hours</p>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <input
-                      type="text"
-                      placeholder="Full Name *"
-                      required
-                      className="bg-primary-foreground/5 border border-primary-foreground/10 rounded-lg px-4 py-3 text-primary-foreground placeholder:text-primary-foreground/30 text-sm focus:outline-none focus:border-glow-blue transition-colors"
-                    />
-                    <input
-                      type="tel"
-                      placeholder="Phone *"
-                      required
-                      className="bg-primary-foreground/5 border border-primary-foreground/10 rounded-lg px-4 py-3 text-primary-foreground placeholder:text-primary-foreground/30 text-sm focus:outline-none focus:border-glow-blue transition-colors"
-                    />
-                  </div>
+                <h3 className="font-display text-2xl font-bold text-foreground mb-1">Get a Free Estimate</h3>
+                <p className="text-body text-sm mb-8">No commitment · Response within 24 hours</p>
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <input
-                    type="email"
-                    placeholder="Email Address *"
+                    type="text"
+                    placeholder="Full Name *"
                     required
-                    className="w-full bg-primary-foreground/5 border border-primary-foreground/10 rounded-lg px-4 py-3 text-primary-foreground placeholder:text-primary-foreground/30 text-sm focus:outline-none focus:border-glow-blue transition-colors"
+                    className="w-full bg-surface-light border border-border rounded-xl px-5 py-3.5 text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-navy/20 focus:border-navy transition-all"
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Phone Number *"
+                    required
+                    className="w-full bg-surface-light border border-border rounded-xl px-5 py-3.5 text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-navy/20 focus:border-navy transition-all"
                   />
                   <input
                     type="text"
-                    placeholder="Project Location"
-                    className="w-full bg-primary-foreground/5 border border-primary-foreground/10 rounded-lg px-4 py-3 text-primary-foreground placeholder:text-primary-foreground/30 text-sm focus:outline-none focus:border-glow-blue transition-colors"
+                    placeholder="Location"
+                    className="w-full bg-surface-light border border-border rounded-xl px-5 py-3.5 text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-navy/20 focus:border-navy transition-all"
                   />
-                  <div className="grid grid-cols-2 gap-4">
-                    <input
-                      type="text"
-                      placeholder="Plot Area (sq.ft)"
-                      className="bg-primary-foreground/5 border border-primary-foreground/10 rounded-lg px-4 py-3 text-primary-foreground placeholder:text-primary-foreground/30 text-sm focus:outline-none focus:border-glow-blue transition-colors"
-                    />
-                    <select className="bg-primary-foreground/5 border border-primary-foreground/10 rounded-lg px-4 py-3 text-primary-foreground/30 text-sm focus:outline-none focus:border-glow-blue transition-colors">
-                      <option value="">Budget Range</option>
-                      <option value="50-100k">$50K - $100K</option>
-                      <option value="100-250k">$100K - $250K</option>
-                      <option value="250-500k">$250K - $500K</option>
-                      <option value="500k+">$500K+</option>
-                    </select>
-                  </div>
                   <textarea
-                    placeholder="Tell us about your project..."
+                    placeholder="Your Requirement..."
                     rows={3}
-                    className="w-full bg-primary-foreground/5 border border-primary-foreground/10 rounded-lg px-4 py-3 text-primary-foreground placeholder:text-primary-foreground/30 text-sm focus:outline-none focus:border-glow-blue transition-colors resize-none"
+                    className="w-full bg-surface-light border border-border rounded-xl px-5 py-3.5 text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-navy/20 focus:border-navy transition-all resize-none"
                   />
                   <button
                     type="submit"
-                    className="w-full bg-glow-blue text-primary-foreground py-4 rounded-lg font-semibold text-sm glow-btn flex items-center justify-center gap-2"
+                    className="w-full bg-navy text-primary-foreground py-4 rounded-xl font-semibold text-sm hover:bg-navy-light transition-colors duration-300 flex items-center justify-center gap-2"
                   >
                     Request Free Estimate
                     <Send className="w-4 h-4" />
